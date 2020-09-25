@@ -2,14 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { M } from "materialize-css";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-event',
+  templateUrl: './event.component.html',
+  styleUrls: ['./event.component.css']
 })
-export class AppComponent implements OnInit {
+export class EventComponent implements OnInit {
 
-  ngOnInit():void {
-    console.log("inicializando materialize en app component...");
+  constructor() { }
+
+  ngOnInit(): void {
+    console.log("inicializando materialize en client component...");
     let modales = document.querySelectorAll('.modal');
     let combos = document.querySelectorAll('.select');
     var instanciaModal = M.Modal.init(modales);
@@ -33,4 +35,5 @@ export class AppComponent implements OnInit {
         format: "dd/mm/yyyy"
       });
   }
+
 }

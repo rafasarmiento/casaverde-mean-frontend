@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { ClientService } from "../../services/client.service";
 import { M } from "materialize-css";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-client',
+  templateUrl: './client.component.html',
+  styleUrls: ['./client.component.css']
 })
-export class AppComponent implements OnInit {
+export class ClientComponent implements OnInit {
 
-  ngOnInit():void {
-    console.log("inicializando materialize en app component...");
+  constructor(public clientService: ClientService) { }
+
+
+
+  ngOnInit(): void {
+    console.log("inicializando materialize en client component...");
     let modales = document.querySelectorAll('.modal');
     let combos = document.querySelectorAll('.select');
     var instanciaModal = M.Modal.init(modales);
@@ -32,5 +37,19 @@ export class AppComponent implements OnInit {
         autoClose: true,
         format: "dd/mm/yyyy"
       });
+    console.log(this.getClients())
+    this.getClients();
   }
+
+  getClients() {
+    this.clientService.getClients().subscribe(
+      res => {
+        this.clientService.clients = res;
+      },
+      err => {
+        console.error(err);
+      }
+    )
+  }
+
 }

@@ -1,0 +1,89 @@
+<div id="clienteTab">
+  <!-- <div class="container"> -->
+  <!-- <div class="row"> -->
+  <!-- <div class="col s12"> -->
+  <ul class="collection" id="listCliente">
+    Por ahora no hay clientes registrados en el Sistema
+  </ul>
+  <table class="highlight responsive-table" id="clientTable">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Telefono</th>
+        <th>Correo</th>
+        <th>Comentarios</th>
+        <th>Editar</th>
+        <th>Borrar</th>
+      </tr>
+    </thead>
+    <tbody id="clientContent">
+      <tr *ngFor="let client of clientService.clients">
+        <td>{{ client.nombre }}</td>
+        <td>{{ client.telefono }}</td>
+        <td>{{ client.email }}</td>
+        <td>{{ client.comentarios }}</td>
+        <td><button><i class="material-icons">edit</i></button></td>
+        <td><button><i class="material-icons">delete</i></button></td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- </div> -->
+  <!-- </div> -->
+  <!-- </div> -->
+  <div class="fixed-action-btn toolbar">
+    <a class="btn-floating btn-large blue modal-trigger waves-effect waves-light" href="#modalCliente">
+      <i class="large material-icons">add</i>
+    </a>
+    <!-- <ul>
+            <li><a class="btn-floating modal-trigger" href="#modalCliente"><i class="medium material-icons">add</i></a></li>
+            <li><a class="btn-floating darken-1"><i class="medium material-icons">delete</i></a></li>
+          </ul> -->
+  </div>
+  <div class="modal" id="modalCliente">
+    <div class="modal-content">
+      <form action="crearCliente" id="formCliente" method="post">
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="text" name="nombre" id="nombre" class="validate" autofocus>
+            <label for="nombre">Nombre</label>
+            <span class="helper-text" data-error="Formato Inválido" data-success="Bien"></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="text" name="" id="telefono1" class="validate">
+            <label for="telefono1">Telefono Principal</label>
+            <span class="helper-text" data-error="Dato Inválido" data-success="Bien"></span>
+          </div>
+          <div class="input-field col s6">
+            <input type="text" name="telefono2" id="telefono2" class="validate">
+            <label for="telefono2">Telefono Secundario</label>
+            <span class="helper-text" data-error="Dato Inválido" data-success="Bien"></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="email" name="email" id="email" class="validate">
+            <label for="email">Correo Electrónico</label>
+            <span class="helper-text" data-error="Correo Inválido" data-success="Bien"></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea name="comentarioscliente" id="comentarioscliente" cols="30" rows="10" data-length=200
+              class="materialize-textarea" maxlength="200"></textarea>
+            <label for="comentarioscliente">Comentarios</label>
+            <span class="helper-text" data-error="Dato Inválido" data-success="Bien"></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s3"><button type="reset" class="btn">Limpiar <i class="materialize-icons"></i></button>
+          </div>
+          <div class="col s3"><button type="submit" class="btn">Registrar <i class="materialize-icons"></i></button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer"><button class="btn modal-close waves-effect waves-green">Cerrar</button></div>
+  </div>
+</div>
