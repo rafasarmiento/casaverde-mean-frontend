@@ -1,4 +1,4 @@
-interface event{
+export interface Event {
     _id: string
     date: Date
     client: object
